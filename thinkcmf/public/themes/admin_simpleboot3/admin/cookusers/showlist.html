@@ -1,0 +1,77 @@
+<include file="public@header"/>
+<style type='text/css'>
+    .pagination{text-align:center;margin-top:20px;margin-bottom: 20px;}  
+    .pagination li{margin:0px 10px;padding: 3px 8px;display: inline-block;}  
+    .pagination .active{background-color:#b9b8b8;color: #fff;}  
+    .pagination .disabled{color:#aaa;}  
+</style>
+</head>
+<body>
+<div class="wrap js-check-wrap">
+    <ul class="nav nav-tabs">
+        <li class="active"><a></a></li>
+    </ul>
+    <form action="" method="post" class="margin-top-20">
+        <table class="table table-hover table-bordered">
+            <thead>
+            <tr>
+                <th width="40">ID</th>
+                <th>头像</th>
+                <th>用户名</th>
+                <th>真实姓名</th>
+                <th>昵称</th>
+                <th>性别</th>
+                <th>手机号码</th>
+                <th>邮箱地址</th>
+                <th>注册时间</th>
+                <th>最后登录时间</th>
+                <th>状态</th>
+                <th width="150">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <foreach name="data" item="vol">
+                <tr>
+                    <td>{$vol.id}</td>
+                    <td><img src='{$vol.avatar}' width="40px" height="40px"/></td>
+                    <td>{$vol.username}</td>
+                    <td>{$vol.realname}</td>
+                    <td>{$vol.nickname}</td>
+                    <td>
+                    <?php   if($vol['sex']==0)
+                        echo '保密';
+                    elseif  ($vol['sex']==1)
+                        echo '男';
+                    elseif  ($vol['sex']==2)
+                        echo '女';
+                    ?>
+                    </td>
+                    <td>{$vol.mobile}</td>
+                    <td>{$vol.email}</td>
+                    <td>{$vol.registertime|date='Y-m-d H:i:s',###}</td>
+                    <td>{$vol.lastlogintime|date='Y-m-d H:i:s',###}</td>
+                    <td>
+                    <?php if($vol['status']=="normal")
+                        echo '正常';
+                    elseif ($vol['status']=="hidden")
+                        echo '禁用';
+                    elseif  ($vol['status']=="deleted")
+                        echo '删除';
+                    ?>
+                    </td>
+                    <td algin="center">
+                        <a href="<?php echo url('edit?id='.$vol['id']); ?>" title="查看详情">查看详情</a>
+		    </td>
+                </tr>
+             </foreach>
+            </tbody>
+        </table>
+        <div class='pagination'>
+            {$page}
+        </div>
+             
+    </form>
+</div>
+<script src="__STATIC__/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<include file="public@header"/>
+<style type='text/css'>
+    .pagination{text-align:center;margin-top:20px;margin-bottom: 20px;}  
+    .pagination li{margin:0px 10px;padding: 3px 8px;display: inline-block;}  
+    .pagination .active{background-color: #b9b8b8;color: #fff;}  
+    .pagination .disabled{color:#aaa;}  
+</style>
+</head>
+<body>
+<div class="wrap js-check-wrap">
+    <ul class="nav nav-tabs">
+        <li class="active"><a></a></li>
+    </ul>
+    <form action="" method="post" class="margin-top-20">
+        <table class="table table-hover table-bordered">
+            <thead>
+            <tr>
+                <th width="40">ID</th>
+                <th>菜谱名称</th>
+                <th>用户名称</th>
+                <th>烹饪时间</th>
+                <th>开始时间</th>
+                <th>温度</th>
+                <th>设备id</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <foreach name="result" item="vol">
+                <tr>
+                    <td>{$vol.id}</td>
+                    <td>{$vol.title}</td>
+                    <td>{$vol.username}</td>
+                    <td>{$vol.cook_time}</td>
+                    <td>{$vol.start_time}</td>
+                    <td>{$vol.temperature}</td>
+                    <td>{$vol.equipment_id}</td>
+                    <td>
+                    <?php if($vol['status']==0)
+                        echo '预约';
+                    elseif ($vol['status']==1)
+                        echo '进行中';
+                    elseif($vol['status']==2)
+                        echo '已完成';
+                    ?>
+                    </td>
+                    <td algin="center">
+                        <a href="<?php echo url('orderedit?id='.$vol['id']); ?>" title="编辑">编辑</a>
+		        	<?php if($vol['id'] > 0): ?>
+		        	 |
+	                <a href="<?php echo url('del?id='.$vol['id']); ?>" onclick="return confirm('确定要删除吗？');" title="移除">移除</a> 
+	                <?php endif; ?>
+                    </td>
+                </tr>
+             </foreach>
+            </tbody>
+        </table> 
+        <div class='pagination'>
+            {$page}
+        </div>
+    </form>
+</div>
+<script src="__STATIC__/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="wrap">
+    <ul class="nav nav-tabs">
+        <li><a href="{:url('cookmenu/show')}">在线菜谱</a></li>
+        <li class="active"><a>发布菜谱</a></li>
+    </ul>
+    <form method="post" class="form-horizontal js-ajax-form margin-top-20" action="{:url('cookmenu/publish')}">
+        <div class="form-group">
+            <label for="input-link_name" class="col-sm-2 control-label">菜谱名称<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_name" name="title" value="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_image" class="col-sm-2 control-label">菜谱图标</label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_image" name="images" value="">
+                <a href="javascript:uploadOneImage('图片上传','#input-link_image');">上传图片</a>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_description" class="col-sm-2 control-label">菜谱介绍</label>
+            <div class="col-md-6 col-sm-10">
+                <textarea class="form-control" name="ingredients"
+                          id="input-link_description"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_description" class="col-sm-2 control-label">菜谱成分介绍</label>
+            <div class="col-md-6 col-sm-10">
+                <textarea class="form-control" name="ingredients_introduction"
+                          id="input-link_description"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_url" class="col-sm-2 control-label">温度<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_url" name="temperature" value="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_description" class="col-sm-2 control-label">口感介绍</label>
+            <div class="col-md-6 col-sm-10">
+                <textarea class="form-control" name="texture"
+                          id="input-link_description"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_description" class="col-sm-2 control-label">食材介绍</label>
+            <div class="col-md-6 col-sm-10">
+                <textarea class="form-control" name="food_weight"
+                          id="input-link_description"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_description" class="col-sm-2 control-label">菜谱步骤</label>
+            <div class="col-md-6 col-sm-10">
+                <textarea class="form-control" name="cook_steps"
+                          id="input-link_description"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_url" class="col-sm-2 control-label">建议时长<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_url" name="cook_time" value="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_url" class="col-sm-2 control-label">发布时间<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+            <input type="text" class="form-control js-bootstrap-datetime" name="cook_time"
+               value=""  autocomplete="off">
+            </div>
+<!--            {$cook_time|default=''}-->
+        </div>
+        <div class="form-group">
+            <label for="input-link_url" class="col-sm-2 control-label">更新时间<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+            <input type="text" class="form-control js-bootstrap-datetime" name="cook_time"
+               value="{$cook_time|default=''}" autocomplete="off">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary js-ajax-submit">{:lang('SAVE')}</button>
+                <a class="btn btn-default" href="{:url('cookmenu/show')}">{:lang('BACK')}</a>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="__STATIC__/js/admin.js"></script>
+</body>
+</html>

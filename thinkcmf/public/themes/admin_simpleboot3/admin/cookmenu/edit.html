@@ -1,0 +1,134 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="wrap">
+    <ul class="nav nav-tabs">
+        <li><a href="{:url('cookmenu/index')}">在线菜谱</a></li>
+        <li><a href="{:url('cookmenu/add')}">添加菜谱</a></li>
+        <li class="active"><a>编辑菜谱</a></li>
+    </ul>
+    <form method="post" class="form-horizontal js-ajax-form margin-top-20" action="{:url('cookmenu/editpost')}">
+        <div class="form-group">
+            <label for="input-link_name" class="col-sm-2 control-label">菜谱名称<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_name" name="title" value="{$data.title}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_image" class="col-sm-2 control-label">菜谱图标</label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_image" name="images" value="{$data.images}">
+                <a href="javascript:uploadOneImage('图片上传','#input-link_image');">上传图片</a>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_description" class="col-sm-2 control-label">菜谱介绍</label>
+            <div class="col-md-6 col-sm-10">
+                <textarea class="form-control" name="ingredients"
+                          id="input-link_description">{$data.ingredients}</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_description" class="col-sm-2 control-label">菜谱成分介绍</label>
+            <div class="col-md-6 col-sm-10">
+                <textarea class="form-control" name="ingredients_introduction"
+                          id="input-link_description">{$data.ingredients_introduction}</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_url" class="col-sm-2 control-label">温度<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_url" name="temperature" value="{$data.temperature}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_description" class="col-sm-2 control-label">口感介绍</label>
+            <div class="col-md-6 col-sm-10">
+                <textarea class="form-control" name="texture"
+                          id="input-link_description">{$data.texture}</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_description" class="col-sm-2 control-label">食材介绍</label>
+            <div class="col-md-6 col-sm-10">
+                <textarea class="form-control" name="food_weight"
+                          id="input-link_description">{$data.food_weight}</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_description" class="col-sm-2 control-label">菜谱步骤</label>
+            <div class="col-md-6 col-sm-10">
+                <textarea class="form-control" name="cook_steps"
+                          id="input-link_description">{$data.cook_steps}</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_url" class="col-sm-2 control-label">建议时长<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_url" name="cook_time" value="{$data.cook_time}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_url" class="col-sm-2 control-label">开始时间<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_url" name="start_time" value="{$data.start_time}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_url" class="col-sm-2 control-label">发布时间<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_url" name="createtime" value="{$data.createtime}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_url" class="col-sm-2 control-label">更新时间<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_url" name="updatetime" value="{$data.updatetime}">
+            </div>
+        </div>
+         <div class="form-group">
+            <label for="input-target" class="col-sm-2 control-label">审核状态<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+		<label class="radio-inline">
+		<input type="radio" name="status" value="H" checked="selected">未审核
+		</label>
+		<label class="radio-inline">
+		<input type="radio" name="status" value="normal">审核通过
+		</label>
+                <label class="radio-inline">
+		<input type="radio" name="status" value="canceled">取消
+		</label>
+		<label class="radio-inline">
+		<input type="radio" name="status" value="rejected">拒绝通过
+		</label>
+                <label class="radio-inline">
+		<input type="radio" name="status" value="deleted">已删除
+		</label>
+            </div>
+        </div>
+         <div class="form-group">
+            <label for="input-target" class="col-sm-2 control-label">烹饪状态<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <label class="radio-inline">
+                    <input type="radio" name="cook_status" value="0" checked="selected"> 预约
+		</label>
+                <label class="radio-inline">
+                    <input type="radio" name="cook_status" value="1"> 正在进行        
+		</label>
+                <label class="radio-inline">
+                    <input type="radio" name="cook_status" value="2"> 已完成
+		</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="hidden" name="id" value="{$data.id}">
+                <button type="submit" class="btn btn-primary js-ajax-submit">{:lang('SAVE')}</button>
+                <a class="btn btn-default" href="{:url('cookmenu/show')}">{:lang('BACK')}</a>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="__STATIC__/js/admin.js"></script>
+</body>
+</html>

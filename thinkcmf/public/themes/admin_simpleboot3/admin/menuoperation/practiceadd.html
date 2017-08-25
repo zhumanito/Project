@@ -1,0 +1,81 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="wrap">
+    <ul class="nav nav-tabs">
+        <li><a href="{:url('menuoperation/practice')}">实施中烹饪列表</a></li>
+        <li class="active"><a>增加实施中烹饪</a></li>
+    </ul>
+    <form method="post" class="form-horizontal js-ajax-form margin-top-20" action="{:url('menuoperation/practiceadd')}">
+        <div class="form-group">
+            <label for="input-link_name" class="col-sm-2 control-label">菜谱名称<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+               <select name="menu_id">
+                <?php foreach($menu as $k=>$v) : ?>
+                <option value="<?php echo $v['id']; ?>" <?php if($v['id'] == $data['menu_id']){echo 'selected';}?>><?php echo $v['title']; ?></option>
+                <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_name" class="col-sm-2 control-label">用户名称<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                 <select name="user_id">
+                <?php foreach($users as $k=>$v) : ?>
+                <option value="<?php echo $v['id']; ?>" <?php if($v['id'] == $data['user_id']){echo 'selected';}?>><?php echo $v['username']; ?></option>
+                <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_name" class="col-sm-2 control-label">烹饪时间<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_name" name="cook_time" value="">
+            </div>
+        </div>
+         <div class="form-group">
+            <label for="input-link_name" class="col-sm-2 control-label">开始时间<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_name" name="start_time" value="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_name" class="col-sm-2 control-label">温度<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_name" name="temperature" value="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input-link_url" class="col-sm-2 control-label">设备id<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" id="input-link_url" name="equipment_id" value="">
+            </div>
+        </div>
+         <div class="form-group">
+            <label for="input-target" class="col-sm-2 control-label">状态<span class="form-required">*</span></label>
+            <div class="col-md-6 col-sm-10">
+                <label class="radio-inline">
+                    <input type="radio" name="status" value="0">预约
+		</label>
+                <label class="radio-inline">
+                    <input type="radio" name="status" value="1"  checked="selected">进行中      
+		</label>
+                <label class="radio-inline">
+                    <input type="radio" name="status" value="2">已完成
+		</label>
+                <label class="radio-inline">
+                    <input type="radio" name="status" value="3">其他
+		</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary js-ajax-submit">{:lang('SAVE')}</button>
+                <a class="btn btn-default" href="{:url('menuoperation/order')}">{:lang('BACK')}</a>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="__STATIC__/js/admin.js"></script>
+</body>
+</html>
